@@ -15,7 +15,6 @@ public class Crypto {
     static String key = "aesEncryptionKey";
     static String iv = "encryptionIntVec";
     public static SecretKey  GenerateSessionKey() throws NoSuchAlgorithmException, UnsupportedEncodingException {
-    //    return new SecretKeySpec(Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), 16), "AES");
         KeyGenerator keygenerator = KeyGenerator.getInstance("AES");
         return keygenerator.generateKey();
     }

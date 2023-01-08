@@ -88,7 +88,9 @@ public class Client {
                     try {
                         String serverResponse = "";
                         while (isOn) {
+                            // read from server
                             serverResponse = otherReadSource.readUTF();
+                            if(!serverResponse.isEmpty())
                             System.out.println("Your friend said : "+ Crypto.decrypt(serverResponse,sessionKey));
                         }
                     } catch (Exception ex)
@@ -103,12 +105,13 @@ public class Client {
             String serverResponse = "";
             while (true)
             {
-                serverResponse = myInput.next() ;
+                serverResponse = myInput.nextLine() ;
                 if (serverResponse.equalsIgnoreCase("exit"))
                 {
                     break;
                 }
-
+                if(!serverResponse.isEmpty())
+                    //write to server
                 otherWriteSource.writeUTF(Crypto.encrypt(serverResponse ,sessionKey));
 
             }
@@ -174,7 +177,7 @@ public class Client {
             int k = 0 ;
             int p = Integer.parseInt(clientCount) ;
             System.out.println("numbers of clients : " + p);
-            while (k <3)
+            while (k <p-1)
             {
                 numbers = otherReadSource.readUTF() ;
                 synchronized (otherClientNumbers)

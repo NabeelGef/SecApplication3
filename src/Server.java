@@ -79,7 +79,7 @@ public class Server {
 
                                 sessionKeyServer =  clientHandler0.getSessionKey(privateKey);
 
-                                System.out.println("SESSION KEY SERVER : " + DatatypeConverter.printHexBinary(sessionKeyServer.getEncoded()));
+                                System.out.println("SESSION KEY SERVER After Encrypted: " + DatatypeConverter.printHexBinary(sessionKeyServer.getEncoded()));
 
                                 //هنا يتم التأكد هل الكلاينت الذي أريد التواصل معه في حالة اتصال مع السيرفر
                                 //إذا كان موجود يتم التواصل معه و إلا انتظار دخول هذا العميل لإرسال الرسائل له
@@ -89,7 +89,7 @@ public class Server {
                                 {
                                     if (clientHandler0.getConnectionNumber().equals(clientHandlerArrayList.get(i).getClientNumber()))
                                     {
-                                        System.out.println("hhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaa");
+                                        System.out.println("Connected Success ...");
                                         clientHandler0.start();
                                         clientHandlerArrayList.get(i).start();
                                         clientHandler0.makeConnectionWithAnotherClient(clientHandlerArrayList.get(i) ) ;

@@ -62,7 +62,6 @@ public class ClientHandler extends Thread {
                 int i =0 ;
                 while (inputStream!=null)
                 {
-                    System.out.println("IN WHILE");
                     register = inputStream.readUTF() ;
                     if (i==0)
                     {
@@ -201,7 +200,7 @@ public class ClientHandler extends Thread {
                                 try {
                                     //otherClient.sendMessage(messages.get(i));
                                     String data = Crypto.encrypt(messages.get(i),otherClient.sessionKey);
-                                    System.out.println("ENCRYPTED : " + data);
+                                    System.out.println("Message ENCRYPTED BY SessionKey : " + data);
                                     otherClient.sendMessage(data);
 
                                 } catch (Exception e) {
@@ -221,7 +220,10 @@ public class ClientHandler extends Thread {
                                 //send the messages to the other client
                                 try {
                                     //sendMessage(messages.get(i));
-                                    sendMessage(Crypto.encrypt(messages.get(i),sessionKey));
+                                    String data =Crypto.encrypt(messages.get(i),sessionKey);
+                                    System.out.println("Message ENCRYPTED BY SessionKey : " + data);
+                                    sendMessage(data);
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
